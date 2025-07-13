@@ -1,0 +1,29 @@
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# EvalEds specific
+*.db
+*.db-shm
+*.db-wal
+exports/
+logs/
+
+# Environment
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp

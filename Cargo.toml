@@ -1,0 +1,89 @@
+[package]
+name = "evaleds"
+version = "0.1.0"
+edition = "2021"
+description = "AI evaluation platform with PromptEds integration"
+authors = ["EvalEds Team <team@evaleds.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourusername/evaleds"
+keywords = ["ai", "evaluation", "prompts", "comparison", "analysis"]
+categories = ["command-line-utilities", "development-tools"]
+readme = "README.md"
+
+[[bin]]
+name = "evaleds"
+path = "src/main.rs"
+
+[dependencies]
+# CLI framework
+clap = { version = "4.4", features = ["derive"] }
+
+# Async runtime
+tokio = { version = "1.0", features = ["full"] }
+
+# Web server
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["fs", "cors"] }
+hyper = "1.0"
+
+# Database
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "sqlite", "chrono", "uuid"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# HTTP clients for AI providers
+reqwest = { version = "0.11", features = ["json", "stream"] }
+
+# Templating and web
+handlebars = "4.5"
+mime_guess = "2.0"
+
+# Utilities
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Interactive CLI
+dialoguer = "0.11"
+console = "0.15"
+indicatif = "0.17"
+
+# Analysis and text processing
+regex = "1.10"
+similar = "2.3"
+
+# Async utilities
+futures = "0.3"
+tokio-stream = "0.1"
+
+# Configuration and paths
+dirs = "5.0"
+
+# Logging
+env_logger = "0.10"
+log = "0.4"
+
+# Async trait support
+async-trait = "0.1"
+
+[dev-dependencies]
+tempfile = "3.8"
+mockall = "0.12"
+criterion = "0.5"
+
+[[bench]]
+name = "evaluation_benchmark"
+harness = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev.package.sqlx-macros]
+opt-level = 3
