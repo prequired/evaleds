@@ -31,14 +31,65 @@ EvalEds is a comprehensive evaluation tool that helps you compare AI model outpu
 
 ### Installation
 
-```bash
-# Install from source
-git clone https://github.com/yourusername/evaleds
-cd evaleds
-cargo install --path .
+#### **📦 One-Line Install (Recommended)**
 
-# Or install from crates.io (when published)
+**Linux/macOS:**
+```bash
+curl -sSL https://raw.githubusercontent.com/prequired/evaleds/main/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/prequired/evaleds/main/scripts/install.ps1 | iex
+```
+
+#### **🛠️ Manual Installation**
+
+**Download and run the installer:**
+```bash
+# Download installer
+curl -O https://raw.githubusercontent.com/prequired/evaleds/main/install.sh
+chmod +x install.sh
+
+# Install (with options)
+./install.sh                    # Download binary (recommended)
+./install.sh --build-from-source # Build from source
+./install.sh --install-dir /custom/path
+```
+
+**Windows:**
+```powershell
+# Download and run
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/prequired/evaleds/main/scripts/install.ps1" -OutFile "install.ps1"
+.\install.ps1
+
+# Or with options
+.\install.ps1 -BuildFromSource
+.\install.ps1 -InstallDir "C:\tools\bin"
+```
+
+#### **🦀 Build from Source**
+```bash
+# Requires Rust 1.70+ 
+git clone https://github.com/prequired/evaleds
+cd evaleds
+make install
+
+# Or manually
+cargo build --release
+cp target/release/evaleds ~/.local/bin/
+```
+
+#### **📦 Using Package Managers**
+```bash
+# Homebrew (macOS/Linux) - Coming Soon
+brew install prequired/tap/evaleds
+
+# Cargo
 cargo install evaleds
+
+# Arch Linux AUR - Coming Soon  
+yay -S evaleds
 ```
 
 ### Setup API Keys
@@ -324,9 +375,52 @@ cargo test --features integration
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
 
+### Uninstallation
+
+#### **🗑️ Quick Uninstall**
+
+**Linux/macOS:**
+```bash
+# Download and run uninstaller
+curl -sSL https://raw.githubusercontent.com/prequired/evaleds/main/uninstall.sh | bash
+
+# Or run the local uninstaller if you have it
+./uninstall.sh
+
+# Remove everything including data
+./uninstall.sh --remove-all
+
+# Dry run to see what would be removed
+./uninstall.sh --dry-run
+```
+
+**Windows:**
+```powershell
+# Download and run uninstaller
+irm https://raw.githubusercontent.com/prequired/evaleds/main/scripts/uninstall.ps1 | iex
+
+# Or run local uninstaller
+.\uninstall.ps1
+
+# Remove everything
+.\uninstall.ps1 -RemoveAll
+```
+
+#### **🔧 Manual Uninstall**
+```bash
+# Remove binary
+rm ~/.local/bin/evaleds
+
+# Remove configuration (optional)
+rm -rf ~/.config/evaleds
+
+# Remove data (optional) 
+rm -rf ~/.local/share/evaleds
+```
+
 ## 🤝 Integration with PromptEds
 
-EvalEds is designed to work seamlessly with [PromptEds](https://github.com/yourusername/prompteds):
+EvalEds is designed to work seamlessly with [PromptEds](https://github.com/prequired/prompteds):
 
 - **Shared Configuration**: Uses PromptEds prompt directory
 - **Variable Handling**: Full support for PromptEds templating
